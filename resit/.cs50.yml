@@ -2,3 +2,4 @@ check50:
   files:
     - !exclude "*"
     - !include "*.java"
+    - !include "*.pdf"
