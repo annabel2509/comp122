@@ -1,5 +1,5 @@
 import check50
-import check50java
+import check50_java
 
 
 @check50.check()
@@ -18,13 +18,13 @@ def item_exists():
 @check50.check(item_exists)
 def item_compiles():
     """Item.java compiles"""
-    check50java.compile("Item.java")
+    check50_java.compile("Item.java")
 
 
 @check50.check(item_compiles)
 def item_constructor():
     """Item constructor as expected"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'ItemTest#testInstantiate'])
 
@@ -32,7 +32,7 @@ def item_constructor():
 @check50.check(item_constructor)
 def item_getPrice():
     """Item.getPrice()"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'ItemTest#getPrice'])
 
@@ -40,7 +40,7 @@ def item_getPrice():
 @check50.check(item_constructor)
 def item_getDescription():
     """Item.getDescription()"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'ItemTest#getDescription'])
 
@@ -48,14 +48,15 @@ def item_getDescription():
 @check50.check(item_constructor)
 def item_pricePerUnitWeight():
     """Item.pricePerUnitWeight()"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'ItemTest#pricePerUnitWeight'])
+
 
 @check50.check(item_constructor)
 def item_toString():
     """Item.toString()"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'ItemTest#testToString'])
 
@@ -73,22 +74,22 @@ def drink_exists():
 @check50.check(drink_exists)
 def drink_compiles():
     """Drink.java compiles."""
-    check50java.compile("Drink.java")
+    check50_java.compile("Drink.java")
 
 
 @check50.check(drink_compiles)
 def drink_isItem():
     """Drink is Item"""
     check50.include("tests/HierarchyTest.java")
-    check50java.junit5.compile_test("HierarchyTest.java")
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.compile_test("HierarchyTest.java")
+    check50_java.junit5.run_and_interpret_test(
         args=['--select-method', 'HierarchyTest#drinkIsItem'])
 
 
 @check50.check(drink_compiles)
 def drink_constructor():
     """Drink constructor as expected"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'DrinkTest#testInstantiate'])
 
@@ -96,7 +97,7 @@ def drink_constructor():
 @check50.check(drink_constructor)
 def drink_getVolume():
     """Drink.getVolume()"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'DrinkTest#getVolume'])
 
@@ -104,10 +105,9 @@ def drink_getVolume():
 @check50.check(drink_constructor)
 def drink_toString():
     """Drink.toString()"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'DrinkTest#testToString'])
-
 
 
 ###############################################
@@ -123,22 +123,22 @@ def sandwich_exists():
 @check50.check(sandwich_exists)
 def sandwich_compiles():
     """Sandwich.java compiles."""
-    check50java.compile("Sandwich.java")
+    check50_java.compile("Sandwich.java")
 
 
 @check50.check(sandwich_compiles)
 def sandwich_isItem():
     """Sandwich is Item"""
     check50.include("tests/HierarchyTest.java")
-    check50java.junit5.compile_test("HierarchyTest.java")
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.compile_test("HierarchyTest.java")
+    check50_java.junit5.run_and_interpret_test(
         args=['--select-method', 'HierarchyTest#sandwichIsItem'])
 
 
 @check50.check(sandwich_compiles)
 def sandwich_constructor():
     """Sandwich constructor as expected"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'SandwichTest#testInstantiate'])
 
@@ -146,7 +146,7 @@ def sandwich_constructor():
 @check50.check(sandwich_constructor)
 def sandwich_getCalories():
     """Sandwich.getCalories()"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'SandwichTest#getCalories'])
 
@@ -154,10 +154,9 @@ def sandwich_getCalories():
 @check50.check(sandwich_constructor)
 def sandwich_toString():
     """Sandwich.toString()"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'SandwichTest#testToString'])
-
 
 
 ###############################################
@@ -173,22 +172,22 @@ def snack_exists():
 @check50.check(snack_exists)
 def snack_compiles():
     """Snack.java compiles"""
-    check50java.compile("Snack.java")
+    check50_java.compile("Snack.java")
 
 
 @check50.check(snack_compiles)
 def snack_isItem():
     """Snack is Item"""
     check50.include("tests/HierarchyTest.java")
-    check50java.junit5.compile_test("HierarchyTest.java")
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.compile_test("HierarchyTest.java")
+    check50_java.junit5.run_and_interpret_test(
         args=['--select-method', 'HierarchyTest#snackIsItem'])
 
 
 @check50.check(snack_compiles)
 def snack_constructor():
     """Snack constructor as expected"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'SnackTest#testInstantiate'])
 
@@ -196,13 +195,14 @@ def snack_constructor():
 @check50.check(snack_constructor)
 def snack_getHealthy():
     """Snack.getHealthy()"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'SnackTest#getHealthy'])
+
 
 @check50.check(snack_constructor)
 def snack_toString():
     """Snack.toString()"""
-    check50java.junit5.run_and_interpret_test(
+    check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'SnackTest#testToString'])
