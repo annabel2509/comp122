@@ -10,5 +10,6 @@ submit50:
   slug: "liv-ac-uk/comp122/2020/resit"
   files:
     - !exclude "*"
+    - !exclude ".class"
     - !include "*.java"
     - !include "*.pdf"
