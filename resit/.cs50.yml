@@ -8,3 +8,7 @@ check50:
 
 submit50:
   slug: "liv-ac-uk/comp122/2020/resit"
+  files:
+    - !exclude "*"
+    - !include "*.java"
+    - !include "*.pdf"
