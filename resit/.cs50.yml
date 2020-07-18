@@ -1,4 +1,6 @@
 check50:
+  dependencies:
+    - git+https://github.com/pazz/check50_java#egg=check50_java
   files:
     - !exclude "*"
     - !include "*.java"
