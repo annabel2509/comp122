@@ -1,4 +1,5 @@
 import check50
+from pprint import pprint
 import check50_java
 
 
@@ -206,3 +207,68 @@ def snack_toString():
     check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'SnackTest#testToString'])
+
+
+#####################################
+# Basket
+#####################################
+@check50.check()
+def basket_exists():
+    """Basket.java exists"""
+    check50.exists("Basket.java")
+
+
+@check50.check(basket_exists)
+def basket_compiles():
+    """Basket.java compiles"""
+    check50_java.compile("Basket.java")
+
+
+@check50.check(basket_compiles)
+def basket_constructor():
+    """Basket constructor as expected"""
+    check50_java.junit5.run_and_interpret_test(
+        classpaths=['tests/'],
+        args=['--select-method', 'BasketTest#testInstantiate'])
+
+
+@check50.check(basket_constructor)
+def basket_addAndGetPrice():
+    """Basket.add() and Basket.getPrice()"""
+    check50_java.junit5.run_and_interpret_test(
+        classpaths=['tests/'],
+        args=['--select-method', 'BasketTest#addAndGetPrice'])
+
+
+@check50.check(basket_constructor)
+def basket_addAndGetWeight():
+    """Basket.add() and Basket.getWeight()"""
+    check50_java.junit5.run_and_interpret_test(
+        classpaths=['tests/'],
+        args=['--select-method', 'BasketTest#addAndGetWeight'])
+
+
+@check50.check(basket_constructor)
+def basket_toString():
+    """Basket.toString()"""
+    check50_java.junit5.run_and_interpret_test(
+        classpaths=['tests/'],
+        args=['--select-method', 'BasketTest#testToString'])
+
+
+@check50.check(basket_constructor)
+def basket_main():
+    """Basket.main()"""
+    expected = """---
+[Cola; price:100p weight:400g volume:330ml]
+[OJ; price:100p weight:300g volume:200ml]
+[BLT; price:200p weight:200g calories:450kcal]
+[Grapes; price:50p weight:200g healthy:Yes]
+---
+Total weight: 1300g
+Total price: 450p
+"""
+    actual = check50_java.run("Basket").stdout()
+    help = "did you introduce training newline or whitespace characters?"
+    if actual != expected:
+        raise check50.Mismatch(expected, actual, help=help)
