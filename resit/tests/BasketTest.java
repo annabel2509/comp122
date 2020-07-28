@@ -15,13 +15,13 @@ class BasketTest {
   
   private static List<Item> createItemList(){
       List<Item> list = new ArrayList<Item>();
-      Drink d = new Drink("Cola", 100, 400, 330);
+      Item d = new Item("Cola", 100, 400);
       list.add(d);
-      Drink o = new Drink("OJ", 100, 300, 200);
+      Item o = new Item("OJ", 100, 300);
       list.add(o);
-      Sandwich s = new Sandwich("BLT", 200, 200, 450);
+      Item s = new Item("BLT", 200, 200);
       list.add(s);
-      Snack g = new Snack("Grapes", 50, 200, true);
+      Item g = new Item("Grapes", 50, 200);
       list.add(g);
 
       return list;
@@ -39,34 +39,54 @@ class BasketTest {
   public void testInstantiate() {
     Basket i = new Basket();
   }
+  
+  @Test
+  public void testAdd() {
+    Basket b = new Basket();
+    b.add(new Item("OJ", 100, 300));
+  }
 
   @Test
   public void testToString() {
     Basket b = new Basket();
-    b.add(new Drink("OJ", 100, 300, 200));
-    b.add(new Snack("Grapes", 50, 200, true));
+    b.add(new Item("OJ", 100, 300));
+    b.add(new Item("Grapes", 50, 200));
     String expected = "---\n"
-        + "[OJ; price:100p weight:300g volume:200ml]\n"
-        + "[Grapes; price:50p weight:200g healthy:Yes]\n"
+        + "[OJ; price:100p weight:300g]\n"
+        + "[Grapes; price:50p weight:200g]\n"
         + "---\n"
         + "Total weight: 700g\n"
         + "Total price: 150p";
     assertEquals(expected, b.toString());
   }
 
+  // test if defined
   @Test
-  public void addAndGetPrice() {
+  public void getPrice() {
     Basket b = new Basket();
     assertEquals(0, b.getPrice());
-    b = createFullBasket();
+  }
+
+  // test if it works with add
+  @Test
+  public void addAndGetPrice() {
+    Basket b = createFullBasket();
     assertEquals(450, b.getPrice());
   }
   
+  // test if defined
   @Test
-  public void addAndGetWeight() {
+  public void getWeight() {
     Basket b = new Basket();
     assertEquals(200, b.getWeight());
     b = createFullBasket();
+    assertEquals(1300, b.getWeight());
+  }
+  
+  // test if it works with add
+  @Test
+  public void addAndGetWeight() {
+    Basket b = createFullBasket();
     assertEquals(1300, b.getWeight());
   }
 }

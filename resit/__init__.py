@@ -5,6 +5,7 @@ import check50_java
 
 @check50.check()
 def report_exists():
+    """report exists"""
     check50.exists("report.pdf")
 
 #####################################
@@ -224,6 +225,12 @@ def basket_compiles():
     check50_java.compile("Basket.java")
 
 
+#@check50.check(basket_compiles)
+#@check50.hidden("basket needs all Item subclasses.")
+#def basket_all_items():
+#    item_compiles.__wrapped__()
+
+
 @check50.check(basket_compiles)
 def basket_constructor():
     """Basket constructor as expected"""
@@ -233,22 +240,49 @@ def basket_constructor():
 
 
 @check50.check(basket_constructor)
+def basket_add():
+    """Basket.add()"""
+    # compile Item class imported in BasketTest.java
+    # to ensure that junit runs successfully.
+    item_compiles.__wrapped__()
+    check50_java.junit5.run_and_interpret_test(
+        classpaths=['tests/'],
+        args=['--select-method', 'BasketTest#testAdd'])
+
+
+@check50.check(basket_constructor)
+def basket_getPrice():
+    """Basket.getPrice()"""
+    check50_java.junit5.run_and_interpret_test(
+        classpaths=['tests/'],
+        args=['--select-method', 'BasketTest#getPrice'])
+
+
+@check50.check(basket_getPrice)
 def basket_addAndGetPrice():
-    """Basket.add() and Basket.getPrice()"""
+    """Basket.add() and Basket.getPrice() work together"""
     check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'BasketTest#addAndGetPrice'])
 
 
 @check50.check(basket_constructor)
-def basket_addAndGetWeight():
+def basket_getWeight():
     """Basket.add() and Basket.getWeight()"""
+    check50_java.junit5.run_and_interpret_test(
+        classpaths=['tests/'],
+        args=['--select-method', 'BasketTest#getWeight'])
+
+
+@check50.check(basket_getWeight)
+def basket_addAndGetWeight():
+    """Basket.add() and Basket.getWeight() work together"""
     check50_java.junit5.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'BasketTest#addAndGetWeight'])
 
 
-@check50.check(basket_constructor)
+@check50.check(basket_add)
 def basket_toString():
     """Basket.toString()"""
     check50_java.junit5.run_and_interpret_test(
@@ -256,8 +290,14 @@ def basket_toString():
         args=['--select-method', 'BasketTest#testToString'])
 
 
-@check50.check(basket_constructor)
-def basket_main():
+@check50.check(basket_compiles)
+def basket_main_exists():
+    """Basket is application class"""
+    check50_java.checks.is_application_class("Basket")
+
+
+@check50.check(basket_main_exists)
+def basket_main_output():
     """Basket.main()"""
     expected = """---
 [Cola; price:100p weight:400g volume:330ml]
