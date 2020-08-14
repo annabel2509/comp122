@@ -49,11 +49,11 @@ class BasketTest {
   @Test
   public void testToString() {
     Basket b = new Basket();
-    b.add(new Item("OJ", 100, 300));
-    b.add(new Item("Grapes", 50, 200));
+    b.add(new Drink("OJ", 100, 300, 200));
+    b.add(new Snack("Grapes", 50, 200, true));
     String expected = "---\n"
-        + "[OJ; price:100p weight:300g]\n"
-        + "[Grapes; price:50p weight:200g]\n"
+        + "[OJ; price:100p weight:300g volume:200ml]\n"
+        + "[Grapes; price:50p weight:200g healthy:Yes]\n"
         + "---\n"
         + "Total weight: 700g\n"
         + "Total price: 150p";
