@@ -309,6 +309,7 @@ Total weight: 1300g
 Total price: 450p
 """
     actual = check50_java.run("Basket").stdout()
+    actual.replace('\r','')
     help = "did you introduce training newline or whitespace characters?"
     if actual != expected:
         raise check50.Mismatch(expected, actual, help=help)
