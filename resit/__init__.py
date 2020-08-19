@@ -309,7 +309,16 @@ Total weight: 1300g
 Total price: 450p
 """
     actual = check50_java.run("Basket").stdout()
-    actual.replace('\r','')
+    actual = actual.replace('\r', '')
     help = "did you introduce training newline or whitespace characters?"
     if actual != expected:
         raise check50.Mismatch(expected, actual, help=help)
+
+@check50.check(item_exists)
+def item_style():
+    """style police"""
+    check50.include("checkstyle/")
+    check50_java.checkstyle.run_and_interpret_checkstyle(
+        jar='checkstyle/checkstyle-8.35-all.jar',
+        checks_file='checkstyle/checks.xml',
+        target='*.java')
