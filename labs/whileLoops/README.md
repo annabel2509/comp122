@@ -77,11 +77,14 @@ You may want to use a `while` loop to compute ![equation](https://latex.codecogs
 
 {% endspoiler %}
 
+{% next %}
 
 ## Submission
 
 These programs will be tested automatically against a range of test cases, so ensure that the output matches the examples given otherwise these are guaranteed to fail.
 
-Once you have completed these exercises submit these in the usual way
+Once you have completed these exercises check and submit these in the usual way
 
-check50 liv-ac-uk/comp122/2021/labs/variables
+check50 liv-ac-uk/comp122/whileLoops/labs/whileLoops/ TODO UPDATE WITH FINAL
+
+submit50 liv-ac-uk/comp122/whileLoops/labs/whileLoops/ TODO UPDATE WITH FINAL
