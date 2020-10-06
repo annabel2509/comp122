@@ -25,7 +25,7 @@ while (lessThanTen) {
 
 We should use `while` statements when we do not know how many times a loop will need to run before terminating.
 
-{% spoiler "Hint"}
+{% spoiler "Hint" %}
 
 We can introduce bugs into our code if we forget to change the condition which is being tested, meaning that the loop runs forever. Infinite while loops can appear as if your program has frozen, when in reality it is executing the same code repeatedly
 
