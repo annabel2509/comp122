@@ -31,18 +31,19 @@ We can introduce bugs into our code if we forget to change the condition which i
 
 {% endspoiler %}
 
+{% next %}
+
 ## Newtons Method
 
 In `Newton.java`, implement [Newton's method](https://www.wikipedia.com/en/Newton's_method#/Square_root_of_a_number) in the given function `sqRoot()` to give an approximation of the square root of an inputted value of $`n`$.
 
-This algorithm (also called the "Babylonian method"), approximates $`\sqrt{n}`$ by iteratively improving a $`guess`$ for the square root according to the formula:
-```math
-new\ guess = \frac{(n / guess) + guess}{2}
-```
+This algorithm (also called the "Babylonian method"), approximates ![equation](https://latex.codecogs.com/gif.latex?%5Csqrt%7Bn%7D) by iteratively improving a $`guess`$ for the square root according to the formula:
 
-Until the last two values differ by at most, a given precision %`\epsilon`$.
+![equation](https://latex.codecogs.com/gif.latex?new%5C%20guess%20%3D%20%5Cfrac%7B%28n%20/%20guess%29%20&plus;%20guess%7D%7B2%7D)
 
-For example, suppose you want to approximate $`\sqrt{n}`$ up to error $`\epsilon=0.0000001`$. If our initial guess is $`1`$, the sequence of guesses would be:
+Until the last two values differ by at most, a given precision ![equation](https://latex.codecogs.com/gif.latex?%5Cepsilon).
+
+For example, suppose you want to approximate ![equation](https://latex.codecogs.com/gif.latex?%5Csqrt%7Bn%7D) up to error ![equation](https://latex.codecogs.com/gif.latex?%5Cepsilon%3D0.0000001). If our initial guess is ![equation](https://latex.codecogs.com/gif.latex?1) , the sequence of guesses would be:
 
 ```
 1.0
@@ -53,15 +54,15 @@ For example, suppose you want to approximate $`\sqrt{n}`$ up to error $`\epsilon
 1.414213562373095
 ```
 
-These last two numbers differ by less than ϵ\epsilonϵ, so the sequence of guesses stops with the final number as the estimate of $`\sqrt{2}`$​​. By taking $`\epsilon`$ to be smaller, one can get a better estimate of $`\sqrt{2}`$​. Of course, this has limits based on the number of decimal places that the computer can store internally.
+These last two numbers differ by less than ϵ\epsilonϵ, so the sequence of guesses stops with the final number as the estimate of ![equation](https://latex.codecogs.com/gif.latex?%5Csqrt%7Bn%7D)​​. By taking ![equation](https://latex.codecogs.com/gif.latex?%5Cepsilon) to be smaller, one can get a better estimate of ![equation](https://latex.codecogs.com/gif.latex?%5Csqrt%7Bn%7D). Of course, this has limits based on the number of decimal places that the computer can store internally.
+
 
 {% next %}
 
 ## Newtons Method
+Your code will take in two positive numbers ![equation](https://latex.codecogs.com/gif.latex?n) and ![equation](https://latex.codecogs.com/gif.latex?guess) as input using `Scanner.nextDouble()`. It should calculate an ![equation](https://latex.codecogs.com/gif.latex?%5Cepsilon)-approximation of the square root of ![equation](https://latex.codecogs.com/gif.latex?n), when ![equation](https://latex.codecogs.com/gif.latex?%5Cepsilon%3D0.0000001).
 
-Your code will take in two positive numbers $`n`$ and $`guess`$ as input using `Scanner.nextDouble()`. It should calculate an $`\epsilon`$-approximation of the square root of $`n`$, when $`\epsilon=0.0000001`$.
-
-Your function should print the square root of $`n`$ and the total number of guesses taken (including the initial guess).
+Your function should print the square root of ![equation](https://latex.codecogs.com/gif.latex?n) and the total number of guesses taken (including the initial guess).
 
 ```
 java Newton
@@ -72,7 +73,7 @@ java Newton
 
 {% spoiler "Hint" %}
 
-You may want to use a `while` loop to compute $`new\ guess`$ and compare it to your previous guess. You can use the function Math.abs() when testing the difference between successive guesses.
+You may want to use a `while` loop to compute ![equation](https://latex.codecogs.com/gif.latex?new%5C%20guess) and compare it to your previous guess. You can use the function Math.abs() when testing the difference between successive guesses.
 
 {% endspoiler %}
 
