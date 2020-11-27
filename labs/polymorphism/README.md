@@ -77,7 +77,7 @@ Make very careful note of each of the private and public variables, and addition
 
 You can test your code with 
 
-`check50 liv-ac-uk/comp122/polymorphism/labs/polymorphism`
+`check50 liv-ac-uk/comp122/polymorphism/problems/polymorphism`
 
 And submit your code with:
-`submit50 liv-ac-uk/comp122/polymorphism/labs/polymorphism`
+`submit50 liv-ac-uk/comp122/polymorphism/problems/polymorphism`
