@@ -3,6 +3,8 @@ lab50:
     - !exclude "*"
     - !include "Student.java"
     - !include "Person.java"
+    - !include "Lecturer.java"
+    - !include "Professor.java"
     
   window:
     - editor

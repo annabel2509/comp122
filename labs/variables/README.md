@@ -211,7 +211,7 @@ Recall the Pythagorean theorem which states that the sides of a right angled tri
 
 Complete the program `Pythagoras.java` which will compute and display the value of $`c`$ when $`a=3`$ and $`b=5`$.
 
-{% spoiler "Hint"}
+{% spoiler "Hint" %}
 
 There is a square root function in the Math package which it would be wise to use!
 
