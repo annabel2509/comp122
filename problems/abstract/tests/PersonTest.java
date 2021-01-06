@@ -10,6 +10,10 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Modifier;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 
 class PersonTest {
@@ -47,20 +51,5 @@ class PersonTest {
             fail("could not find a public method \"greet\".");
             e.printStackTrace();
         }
-    }
-
-    @Test
-    public void testNameSet() {
-        Person person = new Person();
-        person.setName("Test");
-        assertThat(person.getName(), is("Test"));
-    }
-
-    @Test
-    public void testGreet() {
-        Person person = new Person();
-        person.setName("Test");
-        person.setEmail("Test");
-        assertThat(person.greet(), is("sendto: " + "Test" + "Hi " + "Test" + ",\n"));
     }
 }

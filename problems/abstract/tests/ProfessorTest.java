@@ -10,11 +10,19 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Modifier;
 import static org.hamcrest.CoreMatchers.*;
 
-class LecturerTest {
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+
+
+class ProfessorTest {
     @Test
     public void testNameIsPrivate() {
         try {
-            if (!Modifier.isPrivate(Class.forName("Lecturer").getDeclaredField("name").getModifiers())) {
+            if (!Modifier.isPrivate(Class.forName("Professor").getDeclaredField("name").getModifiers())) {
                 fail("attribute name is not private");
             }
         } catch (Exception e) {
@@ -26,7 +34,7 @@ class LecturerTest {
     @Test
     public void testEmailIsPrivate() {
         try {
-            if (!Modifier.isPrivate(Class.forName("Lecturer").getDeclaredField("email").getModifiers())) {
+            if (!Modifier.isPrivate(Class.forName("Professor").getDeclaredField("email").getModifiers())) {
                 fail("attribute email is not private");
             }
         } catch (Exception e) {
@@ -36,31 +44,70 @@ class LecturerTest {
     }
 
     @Test
-    public void testInheritedPerson() {
-        Lecturer lecturer = new Lecturer();
-        assertThat(lecturer, instanceOf(Person.class));
+    public void testInheritedLecturer() {
+        Professor professor = new Professor();
+        assertThat(professor, instanceOf(Lecturer.class));
     }
 
     @Test
     public void testNameSet() {
-        Lecturer lecturer = new Lecturer();
-        lecturer.setName("Test");
-        assertThat(lecturer.getName(), is("Test"));
+        Professor professor = new Professor();
+        professor.setName("Test");
+        assertThat(professor.getName(), is("Test"));
     }
 
     @Test
     public void testGreet() {
-        Lecturer lecturer = new Lecturer();
-        lecturer.setName("Test");
-        lecturer.setEmail("Test");
-        assertThat(lecturer.greet(), is("sendto: " + "Test" + "Hi " + "Test" + ",\n"));
+        Professor professor = new Professor();
+        professor.setName("Test");
+        professor.setEmail("Test");
+        assertThat(professor.greet(), is("sendto: " + "Test" + "Hi " + "Test" + ",\n"));
     }
 
     @Test
     public void testTimeTable() {
-        Lecturer lecturer = new Lecturer();
-        lecturer.setTimeTable("Test");
+        Professor professor = new Professor();
+        professor.setTimeTable("Test");
 
-        assertThat(lecturer.getTimeTable(), is("Test"));
+        assertThat(professor.getTimeTable(), is("Test"));
+    }
+
+    @Test
+    public void testBudget() {
+        Professor professor = new Professor();
+        professor.setBudget(60);
+
+        assertThat(professor.getTimeTable(), is(60));
+    }
+
+    @Test
+    public void testImplementedPayable() {
+        Professor prof = new Professor();
+        assertThat(prof, instanceOf(Payable.class));
+    }
+
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+    private final PrintStream originalErr = System.err;
+
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+    }
+
+    @Test
+    public void testPayProf() {
+        Professor prof = new Professor();
+        prof.payAmount(10);
+        assertEquals("10", outContent.toString());
     }
 }

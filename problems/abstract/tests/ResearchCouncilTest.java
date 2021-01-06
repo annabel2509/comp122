@@ -2,6 +2,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.Assert.assertThat;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+
 import java.lang.reflect.*;
 
 import java.lang.reflect.Constructor;
@@ -13,15 +16,12 @@ import static org.hamcrest.CoreMatchers.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 
-
-class StudentTest {
+class ResearchCouncilTest {
     @Test
     public void testNameIsPrivate() {
         try {
-            if (!Modifier.isPrivate(Class.forName("Student").getDeclaredField("name").getModifiers())) {
+            if (!Modifier.isPrivate(Class.forName("ResearchCouncil").getDeclaredField("name").getModifiers())) {
                 fail("attribute name is not private");
             }
         } catch (Exception e) {
@@ -33,7 +33,7 @@ class StudentTest {
     @Test
     public void testEmailIsPrivate() {
         try {
-            if (!Modifier.isPrivate(Class.forName("Student").getDeclaredField("email").getModifiers())) {
+            if (!Modifier.isPrivate(Class.forName("ResearchCouncil").getDeclaredField("email").getModifiers())) {
                 fail("attribute email is not private");
             }
         } catch (Exception e) {
@@ -43,24 +43,18 @@ class StudentTest {
     }
 
     @Test
-    public void testInheritedPerson() {
-        Student student = new Student();
-        assertThat(student, instanceOf(Person.class));
-    }
-
-    @Test
     public void testNameSet() {
-        Student student = new Student();
-        student.setName("Test");
-        assertThat(student.getName(), is("Test"));
+        ResearchCouncil researchCouncil = new ResearchCouncil();
+        researchCouncil.setName("Test");
+        assertThat(researchCouncil.getName(), is("Test"));
     }
 
     @Test
     public void testGreet() {
-        Student student = new Student();
-        student.setName("Test");
-        student.setEmail("Test");
-        assertThat(student.greet(), is("sendto: " + "Test" + " Hi " + "Test" + ",\n"));
+        ResearchCouncil researchCouncil = new ResearchCouncil();
+        researchCouncil.setName("Test");
+        researchCouncil.setEmail("Test");
+        assertThat(researchCouncil.greet(), is("sendto: " + "Test" + " Dear " + "Test" + ",\n"));
     }
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -82,32 +76,30 @@ class StudentTest {
 
     @Test
     public void testEmail() {
-        Student student = new Student();
-        student.setEmail("test@liv.ac.uk");
-        student.setName("test");
-        student.setGrade(70);
-        student.sendEmail();
-        assertEquals("sendto: test@liv.ac.uk Hi test,\n", outContent.toString());
+        ResearchCouncil researchCouncil = new ResearchCouncil();
+        researchCouncil.setEmail("test@liv.ac.uk");
+        researchCouncil.setName("test");
+        researchCouncil.sendEmail();
+        assertEquals("sendto: test@liv.ac.uk Dear test,\n", outContent.toString());
     }
 
-    @Test
-    public void testDegree() {
-        Student student = new Student();
-        student.setGrade(70);
-        student.awardDegree();
-        assertEquals("You Passed Your Degree, hooray!", outContent.toString());
-    }
 
     @Test
     public void testImplementedBillable() {
-        Student student = new Student();
-        assertThat(student, instanceOf(Billable.class));
+        ResearchCouncil researchCouncil = new ResearchCouncil();
+        assertThat(researchCouncil, instanceOf(Billable.class));
+    }
+
+    @Test
+    public void testImplementedEmailable() {
+        ResearchCouncil researchCouncil = new ResearchCouncil();
+        assertThat(researchCouncil, instanceOf(Emailable.class));
     }
 
     @Test
     public void testBill() {
-        Student student = new Student();
-        student.payBill(10);
+        ResearchCouncil researchCouncil = new ResearchCouncil();
+        researchCouncil.payBill(10);
         assertEquals("10", outContent.toString());
     }
 }
