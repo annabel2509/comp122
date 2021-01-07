@@ -30,7 +30,7 @@ def person_is_abstract():
 
 @check50.check(person_compiles)
 def person_is_emailable():
-    """Person is abstract()"""
+    """Person implements Emailable()"""
     check50_junit.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'PersonTest#testImplementedEmailable'])
@@ -55,9 +55,7 @@ def emailable_has_interface_method():
 
     if methodStr not in fileString:
         raise check50.Mismatch(methodStr, "", help="Your Emailable interface is missing a method")
-    else:
-        raise check50.Mismatch(methodStr, methodStr)
-
+    
 
 
 
@@ -75,10 +73,7 @@ def degreeable_has_interface_method():
 
     if methodStr not in fileString:
         raise check50.Mismatch(methodStr, "", help="Your Degreeable interface is missing a method")
-    else:
-        raise check50.Mismatch(methodStr, methodStr)
-
-
+   
 
 
 
@@ -97,14 +92,7 @@ def billable_has_interface_method():
 
     if methodStr not in fileString:
         raise check50.Mismatch(methodStr, "", help="Your Billable interface is missing a method")
-    else:
-        raise check50.Mismatch(methodStr, methodStr)
-
-
-
-
-
-
+    
 
 @check50.check()
 def student_exists():
