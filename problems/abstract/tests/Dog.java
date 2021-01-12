@@ -1,5 +1,5 @@
 public class Dog implements Degreeable {
-    boolean goodGirl = true;
+    private boolean goodGirl = true;
 
     public void awardDegree() {
         if (goodGirl) {

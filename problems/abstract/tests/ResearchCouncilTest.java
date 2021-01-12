@@ -80,7 +80,7 @@ class ResearchCouncilTest {
         researchCouncil.setEmail("test@liv.ac.uk");
         researchCouncil.setName("test");
         researchCouncil.sendEmail();
-        assertEquals("sendto: test@liv.ac.uk Dear test,\n", outContent.toString());
+        assertEquals("sendto: test@liv.ac.uk Dear test,", outContent.toString().trim());
     }
 
 
@@ -100,6 +100,6 @@ class ResearchCouncilTest {
     public void testBill() {
         ResearchCouncil researchCouncil = new ResearchCouncil();
         researchCouncil.payBill(10);
-        assertEquals("10", outContent.toString());
+        assertEquals("10", outContent.toString().trim());
     }
 }

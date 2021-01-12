@@ -34,7 +34,7 @@ class DogTest {
     @Test
     public void testAwardDegreeIsPublic() {
         try {
-            if (!Modifier.isPublic(Class.forName("Dog").getDeclaredField("awardDegree").getModifiers())) {
+            if (!Modifier.isPublic(Class.forName("Dog").getMethod("awardDegree").getModifiers())) {
                 fail("awardDegree email is not public");
             }
         } catch (Exception e) {
@@ -71,6 +71,6 @@ class DogTest {
     public void testAwardDegree() {
         Dog laika = new Dog();
         laika.awardDegree();
-        assertEquals("Arruff woof woof. WOOF!\n", outContent.toString());
+        assertEquals("Arruff woof woof. WOOF!", outContent.toString().trim());
     }
 }

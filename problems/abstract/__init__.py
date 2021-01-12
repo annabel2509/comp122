@@ -30,7 +30,7 @@ def person_is_abstract():
 
 @check50.check(person_compiles)
 def person_is_emailable():
-    """Person implements Emailable()"""
+    """Person implements emailable"""
     check50_junit.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'PersonTest#testImplementedEmailable'])
@@ -55,7 +55,8 @@ def emailable_has_interface_method():
 
     if methodStr not in fileString:
         raise check50.Mismatch(methodStr, "", help="Your Emailable interface is missing a method")
-    
+
+
 
 
 
@@ -73,7 +74,8 @@ def degreeable_has_interface_method():
 
     if methodStr not in fileString:
         raise check50.Mismatch(methodStr, "", help="Your Degreeable interface is missing a method")
-   
+
+
 
 
 
@@ -81,18 +83,22 @@ def degreeable_has_interface_method():
 @check50.check()
 def billable_exists():
     """Billable.java exists"""
-    check50.exists("Degreeable.java")
+    check50.exists("Billable.java")
 
 @check50.check(billable_exists)
 def billable_has_interface_method():
     with open("Billable.java") as f:
         fileString = f.read().replace("\n", "")
 
-    methodStr = "public void payBill();"
+    methodStr = "public void payBill("
 
     if methodStr not in fileString:
         raise check50.Mismatch(methodStr, "", help="Your Billable interface is missing a method")
-    
+
+
+
+
+
 
 @check50.check()
 def student_exists():
@@ -146,12 +152,13 @@ def student_degree():
         classpaths=['tests/'],
         args=['--select-method', 'StudentTest#testDegree'])
 
+
 @check50.check(student_compiles)
-def student_implements_billable():
-    """Student is an instance of billable"""
+def student_implements_degreeable():
+    """Student is an instance of degreeable"""
     check50_junit.run_and_interpret_test(
         classpaths=['tests/'],
-        args=['--select-method', 'StudentTest#testImplementedBillable'])
+        args=['--select-method', 'StudentTest#testImplementedDegreeable'])
 
 @check50.check(student_compiles)
 def student_bill():

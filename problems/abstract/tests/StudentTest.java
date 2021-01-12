@@ -63,6 +63,13 @@ class StudentTest {
         assertThat(student.greet(), is("sendto: " + "Test" + " Hi " + "Test" + ",\n"));
     }
 
+    @Test
+    public void testGrades() {
+        Student student = new Student();
+        student.setGrade(5);
+        assertThat(student.getGrade(), is(5));
+    }
+
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -87,7 +94,7 @@ class StudentTest {
         student.setName("test");
         student.setGrade(70);
         student.sendEmail();
-        assertEquals("sendto: test@liv.ac.uk Hi test,\n", outContent.toString());
+        assertEquals("sendto: test@liv.ac.uk Hi test,", outContent.toString().trim());
     }
 
     @Test
@@ -95,19 +102,28 @@ class StudentTest {
         Student student = new Student();
         student.setGrade(70);
         student.awardDegree();
-        assertEquals("You Passed Your Degree, hooray!", outContent.toString());
+        assertEquals("You Passed Your Degree, hooray!", outContent.toString().trim());
     }
 
-    @Test
-    public void testImplementedBillable() {
-        Student student = new Student();
-        assertThat(student, instanceOf(Billable.class));
-    }
 
     @Test
     public void testBill() {
         Student student = new Student();
         student.payBill(10);
-        assertEquals("10", outContent.toString());
+        assertEquals("10", outContent.toString().trim());
     }
+
+
+    @Test
+    public void testImplementedDegreeable() {
+        try {
+            if (!Degreeable.class.isAssignableFrom(Class.forName("Student"))) {
+                fail("class student does not implement degreeable");
+            }
+        } catch (Exception e) {
+            fail("could not find class \"Student\".");
+            e.printStackTrace();
+        }
+    }
+
 }

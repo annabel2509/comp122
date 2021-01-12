@@ -52,4 +52,30 @@ class PersonTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void testPersonAbstract() {
+        try {
+            if (!Modifier.isAbstract(Class.forName("Person").getModifiers())) {
+                fail("class person is not abstract");
+            }
+        } catch (Exception e) {
+            fail("could not find an abstract class \"Person\".");
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void testImplementedEmailable() {
+        try {
+            if (!Emailable.class.isAssignableFrom(Class.forName("Person"))) {
+                fail("class person does not implement emailable");
+            }
+        } catch (Exception e) {
+            fail("could not find class \"Person\".");
+            e.printStackTrace();
+        }
+    }
+
 }

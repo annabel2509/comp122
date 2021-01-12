@@ -61,7 +61,7 @@ class ProfessorTest {
         Professor professor = new Professor();
         professor.setName("Test");
         professor.setEmail("Test");
-        assertThat(professor.greet(), is("sendto: " + "Test" + "Hi " + "Test" + ",\n"));
+        assertThat(professor.greet().trim(), is("sendto: " + "Test" + " Hi " + "Test,"));
     }
 
     @Test
@@ -108,6 +108,6 @@ class ProfessorTest {
     public void testPayProf() {
         Professor prof = new Professor();
         prof.payAmount(10);
-        assertEquals("10", outContent.toString());
+        assertEquals("10", outContent.toString().trim());
     }
 }
