@@ -1,8 +1,12 @@
 public class Student {
-    public boolean hasSubmitted = false;
+    public boolean submittedAll = false;
 
 
-    public void submitCoursework() {
-        hasSubmitted = true;
+    public void submittedAllCoursework() {
+        submittedAll = true;
+    }
+
+    public boolean getSubmittedAll() {
+        return submittedAll
     }
 }

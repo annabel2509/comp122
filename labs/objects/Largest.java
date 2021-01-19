@@ -1,19 +1,18 @@
-import java.util.Scanner;
-
 public class Largest {
     public static void main() {
-        Scanner myScanner = new Scanner(System.in);
-        int n = myScanner.nextInt();
+        int n = Terminal.nextInt("");
         int[] myArray = ?
 
         for (;;) {
-
+            ? = Terminal.nextInt("");
         }
 
         int largestValue = ?
 
         for (;;) {
-
+            if (?) {
+                ?
+            }
         }
 
         System.out.println(largestValue);

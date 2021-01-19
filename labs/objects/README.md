@@ -1,6 +1,6 @@
 # Arrays
 
-As covered previously, we have a range of primitive data types for the fundamental problems we frequently encounter when programming.
+As covered in previous labs, we have a range of primitive data types for the fundamental problems we frequently encounter when programming.
 
 As we often deal with lists of values of the same type, these are built into the language directly as arrays.
 
@@ -48,11 +48,11 @@ $ java Largest
 
 ## A Touch of Class
 
-All of the variables we have used so far (with the exception of Scanner) have been primitive data types. There's an awful lot you can do with primitive data types, in languages such as C we only have primitive data types (and people have done an awful lot with C).
+All of the variables we have used so far have been primitive data types. You can do a lot with primitive data types, and in languages such as C we only have primitive data types (and people have done an awful lot with C).
 
 In Java however we have the option of creating more complex datatypes, classes!
 
-Programs of can get complex very quickly, in large pieces of software it is simply impossible to keep track of tens of thousands of lines of code when they are in a single file. To make life much easier for ourselves (honestly), we separate our code into separate functional classes.
+Programs can get complex very quickly, in large pieces of software it is simply impossible to keep track of tens of thousands of lines of code when they are in a single file. To make life much easier for ourselves (honestly), we separate our code into functional classes.
 
 ## Class Half Full
 
@@ -72,10 +72,10 @@ We define a method by first specifying the access modifier of the method, which 
 
 ```java
 public class Student {
-    public boolean hasSubmitted = false;
+    public boolean hasSubmittedAll = false;
 
-    public void submitCoursework() {
-        hasSubmitted = true;
+    public void submittedAllCoursework() {
+        hasSubmittedAll = true;
     }
 }
 ```
@@ -89,22 +89,47 @@ To use classes we must first *instantiate* these as objects. We do this in exact
 ```java
 ...
 Student alice = new Student();      // Instantiating a class
-System.out.println("Alice Submitted Coursework: " + alice.hasSubmitted)
-alice.submitCoursework()
-System.out.println("Alice Submitted Coursework: " + alice.hasSubmitted)
+System.out.println("Alice Submitted Coursework: " + alice.getSubmittedAll())
+alice.submittedAllCoursework()
+System.out.println("Alice Submitted Coursework: " + alice.getSubmittedAll())
 ...
 ```
 
 This is a bit of a boring class currently, so let's add some functionality
 
-## What's in a Name?
+## What's in a grade?
 
-Most students have a name, so at the top of the class add a `public String` variable `name`.
+Add a `public int` to the class to keep track of the students score, called `grade`, initially equal to `0`.
 
-We want to be able to be able to set the students name, so add a method to *set* the name, `setName()`.
+After each of the assignments, the lecturer will update the students score with a method which will return a `void` called `updateGrade(int mark)`, which will *add* the students grade for that assignment to their `grade`.
 
-Additionally add an `int` to the class to keep track of the students score, called `grade`, initially equal to $`0`$
-
-After each of the assignments, the lecturer will update the students score with a method which will return a `void` called `updateGrade(int mark)`, which will add the students grade for that assignment to their `grade`.
+The lecturer will want to view the students accumulative grade, so add another method to the class which will return an integer for the current grade called `getGrade()`.
 
 The automarker will be using these terms, so make sure to follow this specification closely!
+
+Here's how could the program could be used in practice:
+
+```java
+Student alice = new Student();
+Student bob = new Student();
+
+alice.updateGrade(20);
+bob.updateGrade(20);
+
+alice.updateGrade(15);
+bob.updateGrade(25);
+
+alice.updateGrade(40);
+alice.submittedAllCoursework();
+
+if alice.getSubmittedAll() {
+    System.out.println("Alice Total Grade: " + alice.getTotalGrade())
+}
+
+System.out.println("Bob Submitted All Coursework: " + bob.getHasSubmittedAllCourseWork())
+
+bob.updateGrade(35);
+bob.submittedAllCoursework();
+
+System.out.println("Bob Total Grade: " + bob.getTotalGrade())
+```
