@@ -6,7 +6,6 @@ check50:
     - !exclude "*"
     - !include "*.java"
     - !include "*.class"
-    - !include "Comp122.class"
 
 
 submit50:
