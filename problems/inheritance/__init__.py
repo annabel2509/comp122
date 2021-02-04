@@ -163,4 +163,3 @@ def professor_grade():
     check50_junit.run_and_interpret_test(
         classpaths=['tests/'],
         args=['--select-method', 'ProfessorTest#testTimeTable'])
-
