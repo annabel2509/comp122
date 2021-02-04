@@ -12,14 +12,22 @@ def CShantyCompiles():
     check50_java.compile("CShanty.java")
 
 @check50.check(CShantyCompiles)
+def comparison_check():
+    expected = "Soon may the compiler come,\nTo bring class files and exceptions\nSoon may the compiler come,\nTo bring class files and exceptions\nHigh level languages earn my rum\nBut my first love is the C!\n"
+    actual = check50_java.run("CShanty").stdin("2").stdout()
+    if expected != actual:
+        raise check50.Mismatch(expected, actual)
+
+
+@check50.check(CShantyCompiles)
 def CShantyPrintsTwo():
     """Ensures CShanty 2 prints twice"""
-    check50_java.run("CShanty").stdin("2").stdout("Oh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nOh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nBut, my first love is the C!\n").exit()
+    check50_java.run("CShanty").stdin("2").stdout("Soon may the compiler come,\nTo bring class files and exceptions\nSoon may the compiler come,\nTo bring class files and exceptions\nHigh level languages earn my rum\nBut my first love is the C!\n").exit()
 
 @check50.check(CShantyCompiles)
 def CShantyPrintsThree():
-    """Ensures CShanty is printing thrice"""
-    check50_java.run("CShanty").stdin("3").stdout("Oh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nOh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nOh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nBut, my first love is the C!\n").exit()
+    """Ensures CShanty 3 is printing thrice"""
+    check50_java.run("CShanty").stdin("3").stdout("Soon may the compiler come,\nTo bring class files and exceptions\nSoon may the compiler come,\nTo bring class files and exceptions\nSoon may the compiler come,\nTo bring class files and exceptions\nHigh level languages earn my rum\nBut my first love is the C!\n").exit()
 
 
 
