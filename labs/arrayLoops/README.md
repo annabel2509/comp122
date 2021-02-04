@@ -17,6 +17,7 @@ for(int i = 0; i < 5; i++) {
 ```
 
 {% next %}
+
 ## Objected Oriented Piracy
 
 Sea shanties are historically well-tested applications, with known efficacy in hauling tall ships, wooing potential partners, and preserving maritime history. These have a repetitive mitre, which made them them useful timer circuits for early naval operating systems, and means they can be generated with `for` loops. 
@@ -25,6 +26,7 @@ Complete the program CShanty.java so that it prompts the user for an integer, `n
 
 ```
 $ java CShanty
+How many rounds we doin' mateys?
 2                                               // User Input
 Soon may the compiler come,                     // Console Output
 To bring class files and exceptions
@@ -68,6 +70,7 @@ The correct output should be as follows.
 
 ```
 $ java Factorial
+Enter an integer:
 4          // User input
 24
 ```
@@ -147,11 +150,15 @@ Example Usage:
 
 ```
 $ java Largest
-3       // Input
+Length of Array:    // Output
+3                   // Input
+Enter an integer:   // Output
 17
+Enter an integer:
 5
+Enter an integer:
 10
-17      // Output
+17                  // Output
 ```
 
 {% next %}

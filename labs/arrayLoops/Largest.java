@@ -4,7 +4,7 @@ public class Largest {
         int[] myArray = ?
 
         for (;;) {
-            ? = Comp122.getInt();
+            ? = Comp122.getInt("Enter an integer:");
         }
 
         int largestValue = ?
