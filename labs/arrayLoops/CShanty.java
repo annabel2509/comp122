@@ -1,8 +1,8 @@
 public class CShanty {
     public static void main(String[] args) {
-        int n = ?
+        int n = Comp122.getInt("");
 
-        for(? ; ? ; ?) {
+        for(int i = 0; i < n ; i++ ) {
             System.out.println("Soon may the compiler come,");
             System.out.println("To bring class files and exceptions");
         }
