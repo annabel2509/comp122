@@ -9,17 +9,17 @@ def CShantyExists():
 @check50.check(CShantyExists)
 def CShantyCompiles():
     """CShanty.java compiles."""
-    check50_java.compile("CShantyExists.java")
+    check50_java.compile("CShanty.java")
 
 @check50.check(CShantyCompiles)
 def CShantyPrintsTwo():
-    """Ensures CShantyExists is print twice"""
-    check50_java.run("CShantyExists").stdin("2").stdout("Oh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nOh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nBut, my first love is the C!\n").exit()
+    """Ensures CShanty 2 prints twice"""
+    check50_java.run("CShanty").stdin("2").stdout("Oh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nOh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nBut, my first love is the C!\n").exit()
 
 @check50.check(CShantyCompiles)
 def CShantyPrintsThree():
     """Ensures CShanty is printing thrice"""
-    check50_java.run("Hello").stdin("3").stdout("Oh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nOh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nOh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nBut, my first love is the C!\n").exit()
+    check50_java.run("CShanty").stdin("3").stdout("Oh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nOh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nOh I like to code and OOP sets me free!\nFor reliable code, Java is for me\nBut, my first love is the C!\n").exit()
 
 
 
