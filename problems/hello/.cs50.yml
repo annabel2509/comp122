@@ -8,4 +8,5 @@ check50:
     
 
 submit50:
+  slug: "liv-ac-uk/comp122/2021/hello"
   files: *check50_files
