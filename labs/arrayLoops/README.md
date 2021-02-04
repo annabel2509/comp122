@@ -19,15 +19,18 @@ for(int i = 0; i < 5; i++) {
 {% next %}
 ## Objected Oriented Piracy
 
-Sea shanties are historically well-tested applications, with known efficacy in hauling tall ships, wooing potential partners, and preserving maritime history. These have a repetitive mitre which can be generated using for loops. Complete the program CShanty.java so that it prompts the user for an integer, `n`, and then sings the song to the terminal `n` times. The output of your program should be as below:
+Sea shanties are historically well-tested applications, with known efficacy in hauling tall ships, wooing potential partners, and preserving maritime history. These have a repetitive mitre, which made them them useful timer circuits for early naval operating systems, and means they can be generated with `for` loops. 
+
+Complete the program CShanty.java so that it prompts the user for an integer, `n`, and then sings the song to the terminal `n` times. The output of your program should be as below:
 
 ```
 $ java CShanty
 2                                               // User Input
-Oh I like to code and OOP sets me free!     // Console Output
-For reliable code, Java is for me
-Oh I like to code and OOP sets me free!     
-For reliable code, Java is for me
+Soon may the compiler come,                     // Console Output
+To bring class files and exceptions
+Soon may the compiler come,
+To bring class files and exceptions
+High level languages earn my rum
 But, my first love is the C!
 ```
 
